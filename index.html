@@ -7,15 +7,40 @@
   <title>Hangman</title>
 </head>
 <body>
+  <div class="container">
+    <!-- <div id="options-container"></div> -->
+    <div id="letter-container" class="letter-container">A, B, C, D, E, F, G, H, I, K</div>
+    <div id="user-input-section" onkeydown="keyboardAction()">
+      <!-- <span></span> -->
+    </div>
+    <div id="hangman">
+      <svg height="250" witdh="250" class="">
+        <line x1="50" y1="20" x2="130" y2="20" />
+        <line x1="50" y1="20" x2="50" y2="190" />
+        <line x1="130" y1="20" x2="130" y2="50" />
+        <line x1="20" y1="190" x2="80" y2="190" />
 
+        <!--Head-->
+        <circle cx="130" cy="70" r="20" class="hangman-body-part"/>
 
+        <!--Body-->
+        <line x1="130" y1="90" x2="130" y2="140" class="hangman-body-part"/>
 
+        <!--Legs-->
+        <line x1="130" y1="140" x2="100" y2="160" class="hangman-body-part"/>
+        <line x1="130" y1="140" x2="160" y2="160" class="hangman-body-part"/>
 
-
-
-
-
+        <!--Arms-->
+        <line x1="130" x2="100" y1="100" y2="110" class="hangman-body-part"/>
+        <line x1="130" x2="160" y1="100" y2="110" class="hangman-body-part"/>
+      </svg>
+    </div>
+    <div id="new-game-container" class="new-game-popup hide">
+      <div id="result-text"></div>
+      <button id="new-game-button">New Game</button>
+    </div>
+  </div>
+  <!-- Script -->
   <script src="script.js"></script>
-
 </body>
 </html>
