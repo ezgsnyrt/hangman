@@ -7,18 +7,21 @@
 //                             (doesn't know the word, show result text "Don't give up! Let's try again" with new game buton and end game)
 
 // STEP 1
+// Create a word array
 let wordArr = ["Watermelon", "Elephant", "Hippopotamus", "Cascade", "Pseudonym",  "Kaleidoscope", "Quantum", "Serendipity", "Umbrella", "Ephemeral", "Photosynthesis",
-"Algorithm", "Nostalgia", "Perpendicular", "Giraffe", "Nebula"]; // Create a word array
+"Algorithm", "Nostalgia", "Perpendicular", "Giraffe", "Nebula"];
 
-const randomWord = () => {  // Select a random word from wordArr
+// Select a random word from wordArr
+const randomWord = () => {
   return(wordArr[Math.floor(Math.random() * wordArr.length)]);
 }
 const selectedWord = randomWord().toLowerCase(); // Assign the randomWord as selectedWord
 console.log(selectedWord);
 
 // STEP 2
+// Create span element for each letter and append it to user-input-section
 for (let i = 0; i < selectedWord.length; i++) {
-  let spanElement = document.createElement("span"); // Create span element for each letter and append it to user-input-section
+  let spanElement = document.createElement("span");
   spanElement.innerHTML = "_";
   document.getElementById("user-input-section").appendChild(spanElement);
 }
@@ -28,13 +31,15 @@ let correctLetters = []; // Define a variable for correct guess
 let wrongGuessCount = 0; // Define a variable for the number of wrong guesses
 const wrongLettersArr = []; // Define a variable for wrong letters
 
+
 function keyboardAction () { //events: keydown, keyup etc. //document.addEventListener(event, callback)
   document.addEventListener("keydown", event => {
     if (event.keyCode >= 65 && event.keyCode <= 90) { // Only consider letters, not other characters
-      console.log(event.key); //Since the letter is written as a value for key property of the event, include it
+      console.log(event.key); // Since the letter is written as a value for key property of the event, include it
     }
 
-    if(selectedWord.includes(event.key)) { // Check if selectedWord includes event.key
+    // Check if selectedWord includes event.key
+    if(selectedWord.includes(event.key)) {
       [...selectedWord].forEach((letter, index) => { //Show correct letters in the word
         if(letter === event.key) {
           correctLetters.push(letter);
@@ -43,24 +48,30 @@ function keyboardAction () { //events: keydown, keyup etc. //document.addEventLi
       });
     } else { // Show wrong letter trials if the clicked letter does not exist in the word
       wrongGuessCount++;
-      wrongLettersArr.push(event.key);
 
-      const wrongLetters = document.getElementById("wrong-guess");
+      addWrongLetter(event.key.toLowerCase()); // Take and update the wrong letters/inputs by means of keydown event (use it as a parameter)
+
+      // Keep the wrong guesses of the user in wrongLettersArr[]
+      function addWrongLetter(letter) {
+        if (!wrongLettersArr.includes(letter)) { // If the letter is not existed in the array, add it to the array
+          wrongLettersArr.push(letter);
+        }
+        updateWrongLetters(); // Update the wrong letters
+      }
 
       function updateWrongLetters() {
         let wrongLettersHTML = '';
 
         if (wrongLettersArr.length > 0) {
-          wrongLettersHTML += '<h4>Wrong Letter Trials</h4>';
+          wrongLettersHTML += '<h4>Wrong Letter Trials</h4>'; // If there are wrong letters in the guess, add the heading element to html
         }
 
-        for (let i = 0; i < wrongLettersArr.length; i++) {
+        for (let i = 0; i < wrongLettersArr.length; i++) { // Add each wrong letter to html
           wrongLettersHTML += `<span> ${wrongLettersArr[i]} </span>`;
         }
 
-        wrongLetters.innerHTML = wrongLettersHTML;
+        document.getElementById("wrong-guess").innerHTML = wrongLettersHTML; // Upadate the innter html
       }
-      updateWrongLetters();
 
       // Alternative function
       // function updateWrongLetters () {
@@ -77,12 +88,3 @@ function keyboardAction () { //events: keydown, keyup etc. //document.addEventLi
 keyboardAction();
 
 // Restrict wrong letter trials for the same letters not to repeat itself
-
-
-
-
-
-
-
-
-
