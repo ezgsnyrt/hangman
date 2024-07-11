@@ -32,59 +32,60 @@ let correctLetters = []; // Define a variable for correct guess
 let wrongGuessCount = 0; // Define a variable for the number of wrong guesses
 const wrongLettersArr = []; // Define a variable for wrong letters
 
-
 function keyboardAction () { //events: keydown, keyup etc. //document.addEventListener(event, callback)
   document.addEventListener("keydown", event => {
     if (event.keyCode >= 65 && event.keyCode <= 90) { // Only consider letters, not other characters
-      console.log(event.key); // Since the letter is written as a value for key property of the event, include it
-    }
+      console.log("Valid key:", event.key); // Since the letter is written as a value for key property of the event, include it
 
-    // Check if selectedWord includes event.key
-    if(selectedWord.includes(event.key)) {
-      [...selectedWord].forEach((letter, index) => { //Show correct letters in the word
-        if(letter === event.key) {
-          correctLetters.push(letter);
-          document.querySelector("#user-input-section").querySelectorAll("span")[index].innerText = letter; // Another option is to create const displayWord = document.querySelector("#user-input-section")
+      // Check if selectedWord includes event.key
+      if(selectedWord.includes(event.key)) {
+        [...selectedWord].forEach((letter, index) => { //Show correct letters in the word
+          if(letter === event.key) {
+            correctLetters.push(letter);
+            document.querySelector("#user-input-section").querySelectorAll("span")[index].innerText = letter; // Another option is to create const displayWord = document.querySelector("#user-input-section")
+          }
+        });
+      } else { // Show wrong letter trials if the clicked letter does not exist in the word
+        wrongGuessCount++;
+
+        addWrongLetter(event.key.toLowerCase()); // Take and update the wrong letters/inputs by means of keydown event (use it as a parameter)
+
+        // Keep the wrong guesses of the user in wrongLettersArr[]
+        function addWrongLetter(letter) {
+
+          if (!wrongLettersArr.includes(letter)) { // If the letter is not existed in the array, add it to the array
+            wrongLettersArr.push(letter);
+            showNextBodyPart(); //Show the body parts
+          }
+          updateWrongLetters(); // Update the wrong letters
         }
-      });
-    } else { // Show wrong letter trials if the clicked letter does not exist in the word
-      wrongGuessCount++;
 
-      addWrongLetter(event.key.toLowerCase()); // Take and update the wrong letters/inputs by means of keydown event (use it as a parameter)
+        function updateWrongLetters() {
+          let wrongLettersHTML = '';
 
-      // Keep the wrong guesses of the user in wrongLettersArr[]
-      function addWrongLetter(letter) {
+          if (wrongLettersArr.length > 0) {
+            wrongLettersHTML += '<h4>Wrong Letter Trials</h4>'; // If there are wrong letters in the guess, add the heading element to html
+          }
 
-        if (!wrongLettersArr.includes(letter)) { // If the letter is not existed in the array, add it to the array
-          wrongLettersArr.push(letter);
-          showNextBodyPart();
+          for (let i = 0; i < wrongLettersArr.length; i++) { // Add each wrong letter to html
+            wrongLettersHTML += `<span> ${wrongLettersArr[i]} </span>`;
+          }
+
+          document.getElementById("wrong-guess").innerHTML = wrongLettersHTML; // Upadate the innter html
         }
-        updateWrongLetters(); // Update the wrong letters
+
+        // Alternative function
+        // function updateWrongLetters () {
+        //   wrongLetters.innerHTML = `
+        //     ${wrongLettersArr.length > 0 ? '<h4>Wrong Letter Trials</h4>' : ''}
+        //     ${wrongLettersArr.map(letter => `<span> ${letter} </span>`)}
+        //   `;
+        // }
+        // updateWrongLetters();
+        // if (wrongGuessCount === 0) { }
       }
-
-      function updateWrongLetters() {
-        let wrongLettersHTML = '';
-
-        if (wrongLettersArr.length > 0) {
-          wrongLettersHTML += '<h4>Wrong Letter Trials</h4>'; // If there are wrong letters in the guess, add the heading element to html
-        }
-
-        for (let i = 0; i < wrongLettersArr.length; i++) { // Add each wrong letter to html
-          wrongLettersHTML += `<span> ${wrongLettersArr[i]} </span>`;
-        }
-
-        document.getElementById("wrong-guess").innerHTML = wrongLettersHTML; // Upadate the innter html
-      }
-
-      // Alternative function
-      // function updateWrongLetters () {
-      //   wrongLetters.innerHTML = `
-      //     ${wrongLettersArr.length > 0 ? '<h4>Wrong Letter Trials</h4>' : ''}
-      //     ${wrongLettersArr.map(letter => `<span> ${letter} </span>`)}
-      //   `;
-      // }
-      // updateWrongLetters();
-      // if (wrongGuessCount === 0) { }
+    } else {
+      console.log("Invalid key:", event.key);
     }
   });
 }
