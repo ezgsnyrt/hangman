@@ -9,7 +9,8 @@
 // STEP 1
 // Create a word array
 let wordArr = ["Watermelon", "Elephant", "Hippopotamus", "Cascade", "Pseudonym",  "Kaleidoscope", "Quantum", "Serendipity", "Umbrella", "Ephemeral", "Photosynthesis",
-"Algorithm", "Nostalgia", "Perpendicular", "Giraffe", "Nebula"];
+"Algorithm", "Nostalgia", "Perpendicular", "Giraffe", "Nebula", "Antediluvian", "Sesquipedalian", "Effervescent", "Obfuscate", "Perspicacious", "Conflagration",
+"Transmogrify", "Perfidious", "Circumlocution", "Magnanimous"];
 
 // Select a random word from wordArr
 const randomWord = () => {
@@ -53,8 +54,10 @@ function keyboardAction () { //events: keydown, keyup etc. //document.addEventLi
 
       // Keep the wrong guesses of the user in wrongLettersArr[]
       function addWrongLetter(letter) {
+
         if (!wrongLettersArr.includes(letter)) { // If the letter is not existed in the array, add it to the array
           wrongLettersArr.push(letter);
+          showNextBodyPart();
         }
         updateWrongLetters(); // Update the wrong letters
       }
@@ -87,4 +90,17 @@ function keyboardAction () { //events: keydown, keyup etc. //document.addEventLi
 }
 keyboardAction();
 
-// Restrict wrong letter trials for the same letters not to repeat itself
+
+//Show hangman body parts considering each wrong guess
+function showNextBodyPart () {
+  // Define and select hangman body parts
+  const hangmanBodyParts = document.querySelectorAll('.hangman-body-part');
+
+  for(let i = 0; i < hangmanBodyParts.length; i++) {
+    if(hangmanBodyParts[i].classList.contains('hide')) {
+      hangmanBodyParts[i].classList.remove('hide');
+
+      break;
+    }
+  }
+}

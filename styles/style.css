@@ -101,17 +101,15 @@ body {
   border-radius: 10px;
 }
 
-#hangman svg {
+#hangman svg,
+.hangman-body-part {
   stroke: black;
   stroke-width: 5;
+  /* transition: all 0.6s ease; */
 }
 
 #hangman svg circle {
   fill: transparent;
-}
-
-.hangman-body-part {
-  display: none;
 }
 
 .hide {
