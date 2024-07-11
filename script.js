@@ -1,7 +1,7 @@
-// Create a word array +
-// Create line under each letter considering the number of letters in the word +
-// If the user's guess has already been existed in the word, show the letter in its correct place +
-// For each wrong guess of the user, show  hangman's body parts respectively
+// Create a word array - DONE
+// Create line under each letter considering the number of letters in the word - DONE
+// If the user's guess has already been existed in the word, show the letter in its correct place - DONE
+// For each wrong guess of the user, show  hangman's body parts respectively - DONE
 // Disable letters in the wrong guess in the keyboard
 // Show the result if the user (knows the word, show result text "Congrats! You succesfully found the word" with new game buton and end game)
 //                             (doesn't know the word, show result text "Don't give up! Let's try again" with new game buton and end game)
@@ -26,6 +26,30 @@ for (let i = 0; i < selectedWord.length; i++) {
   spanElement.innerHTML = "_";
   document.getElementById("user-input-section").appendChild(spanElement);
 }
+
+// Generate koyboard buttons
+function generateButton() {
+  const keyboardDiv = document.getElementById("keyboard");
+  keyboardDiv.innerHTML = "abcdefghijklmnopqrstuvwxyz"
+    .split("")
+    .map(
+      (letter) =>
+        `<button
+          class="alphabet-button"
+          id="${letter}"
+          onclick="handleClick(event)"
+        >
+        ${letter}
+        </button>`
+    )
+    .join("");
+    return keyboardDiv;
+}
+generateButton();
+
+
+
+
 
 // STEP 3
 let correctLetters = []; // Define a variable for correct guess
@@ -105,3 +129,5 @@ function showNextBodyPart () {
     }
   }
 }
+
+//TODO: Upper case letters are shown in the wrong letter trials part even if they are included in the word.

@@ -95,7 +95,11 @@ body {
 }
 
 #hangman {
-  display: block;
+  /* display: block; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   margin: auto;
   border: 10px solid #0368c6;
   border-radius: 10px;
@@ -114,6 +118,51 @@ body {
 
 .hide {
   display: none;
+}
+
+#keyboard {
+  width: 40rem;
+  height: 18rem;
+  background-color: #e1e5ee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1.8rem;
+}
+
+.alphabet-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  color: #2C2C31;
+  box-shadow:  0 2px 4px #454856;
+  margin: 0.3rem;
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  height: 2.7rem;
+  width: 3.1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  /* appearance: none; */
+}
+
+.alphabet-button:hover {
+  background-color: #404146;
+  color: #dee2e6;
+}
+
+.alphabet-button:focus {
+  background-color: #000000;
+  box-shadow:  0 5px 8px #202020;
+  color: #ffffff;
+}
+
+.selected {
+  background-color: gray;
+  cursor: not-allowed;
 }
 
 #wrong-guess {
