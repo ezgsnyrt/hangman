@@ -139,11 +139,12 @@ function keyboardAction () { // events: keydown, keyup etc. //document.addEventL
     if (event.keyCode >= 65 && event.keyCode <= 90) { // Only consider letters, not other characters
       console.log("Valid key:", event.key); // Since the letter is written as a value for key property of the event, include it
 
+      const inputToLowerCase = event.key.toLowerCase();
 
-      // Check if selectedWord includes event.key
-      if(selectedWord.includes(event.key)) {
+      // Check if selectedWord includes event.key updates as inputToLowerCase
+      if(selectedWord.includes(inputToLowerCase)) {
         [...selectedWord].forEach((letter, index) => { // Show correct letters in the word
-          if(letter === event.key) {
+          if(letter === inputToLowerCase) {
             correctLetters.push(letter);
             document.querySelector("#user-input-section").querySelectorAll("span")[index].innerText = letter; // Another option is to create const displayWord = document.querySelector("#user-input-section")
           }
@@ -152,20 +153,19 @@ function keyboardAction () { // events: keydown, keyup etc. //document.addEventL
         wrongGuessCount++;
 
         // Call function addWrongLetter(letter)
-        addWrongLetter(event.key.toLowerCase()); // Take and update the wrong letters/inputs by means of keydown event (use it as a parameter)
+        addWrongLetter(inputToLowerCase); // Take and update the wrong letters/inputs by means of keydown event (use it as a parameter)
 
         // updateWrongLetters() has already been called in addWrongLetters function
       }
 
-        // Keyboard'da basılan event key'i burada "selected" yapmalıyım
         // Use getElementById to select element with id. E.g., if 'a' is the clicked letter, buttonElement becomes <button id="a">...</button>
-        const buttonElement = document.getElementById(event.key); // letter refers to letters clicked in keyboard or virtual keyboard.
+        const buttonElement = document.getElementById(inputToLowerCase); // letter refers to letters clicked in keyboard or virtual keyboard.
         // If buttonElement exists (buttonElement !== null olduğunda) and it doesn't have a 'selected' class already, add 'selected' class
         if (buttonElement && !buttonElement.classList.contains('selected')) { // Control buttonElement
         buttonElement.classList.add('selected');
         }
     } else {
-      console.log("Invalid key:", event.key);
+      console.log("Invalid key:", inputToLowerCase);
     }
   });
 }
