@@ -2,7 +2,7 @@
 // Create line under each letter considering the number of letters in the word - DONE
 // If the user's guess has already been existed in the word, show the letter in its correct place - DONE
 // For each wrong guess of the user, show  hangman's body parts respectively - DONE
-// Disable letters in the wrong guess in the keyboard
+// Disable letters in the wrong guess in the keyboard - DONE
 // Show the result if the user (knows the word, show result text "Congrats! You succesfully found the word" with new game buton and end game)
 //                             (doesn't know the word, show result text "Don't give up! Let's try again" with new game buton and end game)
 
@@ -47,8 +47,34 @@ function generateButton() {
 }
 generateButton();
 
+// Handle button click processes
+function handleClick(event) {
+  const buttonClicked = event.target.nodeName === "BUTTON"; //Check if the event.target element is a <button> element. event.target represents the DOM element triggering the event. The nodeName property returns the type of the element in uppercase (e.g., "BUTTON").
+  if (buttonClicked) {
+    //Use the event target id (the element triggering the event) to find and return the actual DOM element
+    const buttonId = document.getElementById(event.target.id); //Use event.target.id within the event handler to get the id attribute of the element that triggered the event (e.g., a button clicked), and event.target.id retrieves the id of that element.
+    buttonId.classList.add("selected");
+    const letter = event.target.id;
+    manageLetterProcesses(letter);
+  }
+}
 
-
+// Manage letter processes
+function manageLetterProcesses(letter) {
+  if (selectedWord.includes(letter)) {
+    [...selectedWord].forEach((char, index) => {
+      if (char === letter) {
+        correctLetters.push(char);
+        document.querySelector("#user-input-section").querySelectorAll("span")[index].innerText = char;
+      }
+    });
+  } else {
+    if (!wrongLettersArr.includes(letter)) {
+      wrongLettersArr.push(letter);
+      // updateWrongLetters()
+    }
+  }
+}
 
 
 // STEP 3
@@ -82,6 +108,7 @@ function keyboardAction () { //events: keydown, keyup etc. //document.addEventLi
             showNextBodyPart(); //Show the body parts
           }
           updateWrongLetters(); // Update the wrong letters
+          // manageLetterProcesses();
         }
 
         function updateWrongLetters() {

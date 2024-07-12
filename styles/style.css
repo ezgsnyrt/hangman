@@ -161,7 +161,9 @@ body {
 }
 
 .selected {
-  background-color: gray;
+  /* background-color: gray;
+  cursor: not-allowed; */
+  background-color: pink;
   cursor: not-allowed;
 }
 
