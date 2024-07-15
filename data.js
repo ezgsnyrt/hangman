@@ -1,0 +1,31 @@
+// Create a word array - DONE
+// STEP 1
+// Create a word array
+let wordArr = [
+    "Watermelon",
+    "Elephant",
+    "Hippopotamus",
+    "Cascade",
+    "Pseudonym",
+    "Kaleidoscope",
+    "Quantum",
+    "Serendipity",
+    "Umbrella",
+    "Ephemeral",
+    "Photosynthesis",
+    "Algorithm",
+    "Nostalgia",
+    "Perpendicular",
+    "Giraffe",
+    "Nebula",
+    "Antediluvian",
+    "Sesquipedalian",
+    "Effervescent",
+    "Obfuscate",
+    "Perspicacious",
+    "Conflagration",
+    "Transmogrify",
+    "Perfidious",
+    "Circumlocution",
+    "Magnanimous",
+];
