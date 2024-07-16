@@ -151,6 +151,19 @@ function showNextBodyPart() {
     }
 }
 
+function resetHangmanBodyParts() {
+    const hangmanBodyParts = document.querySelectorAll(".hangman-body-part");
+
+    hangmanBodyParts.forEach(function resetHangmanBodyParts(hangmanBodyPart) {
+        if (!hangmanBodyPart.classList.contains("hide")) {
+            hangmanBodyPart.classList.add("hide");
+        }
+    });
+    console.log("All body parts are hided");
+}
+
+// }
+
 // STEP 3
 let correctLetters = []; // Define a variable for correct guess
 let wrongGuessCount = 0; // Define a variable for the number of wrong guesses
@@ -231,6 +244,7 @@ function handleNewGameBtnClick(event) {
     wrongGuessCount = 0;
     wrongLettersArr = [];
     resetWrongLetters();
+    resetHangmanBodyParts();
     selectedWord = randomWord().toLowerCase();
     console.log(selectedWord);
     createLetterSpans();
