@@ -52,7 +52,6 @@ body {
     padding: 0 2% 0 2%;
 }
 #hangman {
-    /* display: block; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -65,7 +64,6 @@ body {
 .hangman-body-part {
     stroke: black;
     stroke-width: 5;
-    /* transition: all 0.6s ease; */
 }
 #hangman svg circle {
     fill: transparent;
@@ -109,8 +107,6 @@ body {
     color: #ffffff;
 }
 .selected {
-    /* background-color: gray;
-  cursor: not-allowed; */
     background-color: pink;
     cursor: not-allowed;
 }
