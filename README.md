@@ -2,14 +2,10 @@
 
 This is a fun and interactive **JavaScript-based Hangman** game where the player guesses letters to reveal a hidden word. The game features an on-screen keyboard and progressively reveals the hangman figure for incorrect guesses.
 
----
-
 ## 🛠️ Technologies Used
 - 📄 HTML5
 - 🎨 CSS3
 - 📜  JavaScript (ES6)
-
----
 
 ## 🎮 How to Play
 1. **Guess Letters**: Click the letters on the virtual keyboard or use your physical keyboard to guess.
@@ -25,6 +21,7 @@ This is a fun and interactive **JavaScript-based Hangman** game where the player
 - **Hangman Drawing**: The hangman figure reveals step by step for incorrect guesses.
 - **Result Display**: Win or lose messages are displayed with an option to restart the game.
 - **User Feedback**: Wrong letters are shown separately, and body parts are drawn progressively.
+- **Responsive Design**: The game is optimized for mobile, tablet, and desktop devices, ensuring a seamless experience across all screen sizes.
 
 ## 🖋️ Credits
 Created with ❤️ by Ezgi Senyurt-Erturk.

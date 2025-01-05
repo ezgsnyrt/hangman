@@ -10,8 +10,6 @@ body {
 .container {
     font-size: 16px;
     background-color: #ffffff;
-    width: 90vw;
-    height: 55%;
     max-width: 60rem;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -26,7 +24,6 @@ body {
         linear-gradient(to right, #98c8f7 0.9px, #fdfdfe 0.9px);
     background-size: 18px 18px;
 }
-
 .end-game-popup {
     background-color: #ffffff;
     position: absolute;
@@ -72,13 +69,10 @@ body {
     display: none;
 }
 #keyboard {
-    width: 40rem;
-    height: 18rem;
     background-color: #e1e5ee;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 1.8rem;
 }
 .alphabet-button {
     display: flex;
@@ -87,11 +81,6 @@ body {
     background-color: #ffffff;
     color: #2c2c31;
     box-shadow: 0 2px 4px #454856;
-    margin: 0.3rem;
-    padding: 0.8rem;
-    font-size: 1.2rem;
-    height: 2.7rem;
-    width: 3.1rem;
     border-radius: 0.5rem;
     cursor: pointer;
     border: none;
@@ -112,16 +101,12 @@ body {
 }
 #wrong-guess {
     color: purple;
-    margin: 2% 0;
-    font-size: 1.2rem;
 }
 #result-text h2 {
-    font-size: 1.8em;
     text-align: center;
 }
 #result-text p {
-    font-size: 1.25em;
-    margin: 1em 0 2em 0;
+    text-align: center;
 }
 #result-text span {
     font-weight: 600;
@@ -137,15 +122,10 @@ body {
     bottom: 0;
 }
 #popup {
-    width: 20%;
-    height: 20%;
     background-color: pink;
-    padding: 2%;
     box-shadow: 0 10px 10px 4px rgba(0, 0, 0, 0.2);
 }
 #new-game-button {
-    font-size: 1.25em;
-    padding: 0.5em 1em;
     background-color: #8c52ff;
     border: 3px solid #000000;
     color: #fff;
@@ -153,8 +133,6 @@ body {
     cursor: pointer;
 }
 #end-game-button {
-    font-size: 1.25em;
-    padding: 0.5em 1em;
     background-color: #8c52ff;
     border: 3px solid #000000;
     color: #fff;
@@ -166,4 +144,154 @@ body {
 }
 .lose-msg {
     color: #fe5152;
+}
+
+@media (min-width: 769px) {
+    .container {
+        width: 90vw;
+        height: 65%;
+    }
+    #keyboard {
+        width: 40rem;
+        height: 22rem;
+        padding: 0.5rem 1.5rem;
+    }
+    .alphabet-button {
+        margin: 0.3rem;
+        padding: 0.8rem;
+        font-size: 1.2rem;
+        height: 2.7rem;
+        width: 3.1rem;
+    }
+    #wrong-guess {
+        margin: 2% 0;
+        font-size: 1.2rem;
+    }
+    #result-text h2 {
+        font-size: 2em;
+    }
+    #result-text p {
+        font-size: 1.25em;
+        margin: 1em 0 2em 0;
+    }
+    #popup {
+        width: 35%;
+        height: 32%;
+        padding: 4% 6%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    #new-game-button,
+    #end-game-button {
+        font-size: 1.3em;
+        padding: 0.7em 1em;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 100%;
+        height: 75%;
+        padding: 1.5rem;
+    }
+    #hangman {
+        min-height: 40vh;
+    }
+    .container {
+        width: 90vw;
+        height: 65%;
+    }
+    #user-input-section {
+        font-size: 1.7rem;
+    }
+    .alphabet-button {
+        margin: 0.2rem;
+        padding: 0.7rem;
+        font-size: 1rem;
+        height: 2rem;
+        width: 2rem;
+    }
+    #keyboard {
+        width: 20rem;
+        height: 24rem;
+        padding: 0.5rem;
+    }
+    #wrong-guess {
+        margin: 2%;
+        font-size: 1.3rem;
+    }
+    #popup {
+        width: 60%;
+        height: 30%;
+        padding: 2% 7%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #result-text h2 {
+        font-size: 2.2em;
+    }
+    #result-text p {
+        font-size: 1.25em;
+        margin: 1.5em 0;
+    }
+    #new-game-button,
+    #end-game-button {
+        font-size: 1.4em;
+        padding: 0.6em 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        height: 80%;
+        padding: 1.4rem;
+    }
+    #user-input-section {
+        font-size: 1.4rem;
+    }
+    #keyboard {
+        width: 10rem;
+        height: 22rem;
+        padding: 0.4rem;
+    }
+    .alphabet-button {
+        height: 1.4rem;
+        width: 1.4rem;
+        font-size: 0.7rem;
+        margin: 0.1rem;
+    }
+    #wrong-guess {
+        margin: 10% 2%;
+        font-size: 1.3rem;
+    }
+    #result-text h2 {
+        font-size: 1.8em;
+    }
+    #result-text p {
+        font-size: 1.3em;
+        margin: 1em 0 2em 0;
+    }
+    #popup {
+        width: 90%;
+        height: 30%;
+        padding: 2% 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #result-text h2 {
+        font-size: 2.8em;
+    }
+    #result-text p {
+        font-size: 1.5em;
+        margin: 1.6em 0;
+    }
+    #new-game-button,
+    #end-game-button {
+        font-size: 1.6em;
+        padding: 0.5em 0.6em;
+    }
 }
