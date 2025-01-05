@@ -1,10 +1,3 @@
-// Create line under each letter considering the number of letters in the word - DONE
-// If the user's guess has already been existed in the word, show the letter in its correct place - DONE
-// For each wrong guess of the user, show  hangman's body parts respectively - DONE
-// Disable letters in the wrong guess in the keyboard - DONE
-// Show the result if the user (knows the word, show result text "Congrats! You succesfully found the word" with new game buton and end game)
-//                             (doesn't know the word, show result text "Don't give up! Let's try again" with new game buton and end game)
-
 // Select a random word from wordArr
 const randomWord = () => {
     return wordArr[Math.floor(Math.random() * wordArr.length)];
@@ -12,7 +5,6 @@ const randomWord = () => {
 const selectedWord = randomWord().toLowerCase(); // Assign the randomWord as selectedWord
 console.log(selectedWord);
 
-// STEP 2
 // Create span element for each letter and append it to user-input-section
 for (let i = 0; i < selectedWord.length; i++) {
     let spanElement = document.createElement("span");
@@ -133,7 +125,6 @@ function showNextBodyPart() {
     }
 }
 
-// STEP 3
 let correctLetters = []; // Define a variable for correct guess
 let wrongGuessCount = 0; // Define a variable for the number of wrong guesses
 const wrongLettersArr = []; // Define a variable for wrong letters
