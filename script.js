@@ -1,13 +1,3 @@
-// Create line under each letter considering the number of letters in the word - DONE
-// If the user's guess has already been existed in the word, show the letter in its correct place - DONE
-// For each wrong guess of the user, show  hangman's body parts respectively - DONE
-// Disable letters in the wrong guess in the keyboard - DONE
-// Show the result if the user (knows the word, show result text "Congrats! You succesfully found the word" with new game buton and end game)
-//                             (doesn't know the word, show result text "Don't give up! Let's try again" with new game buton and end game)
-
-// Create a word array - DONE
-// STEP 1
-// Create a word array
 let wordArr = [
     "Watermelon",
     "Elephant",
@@ -45,7 +35,6 @@ let selectedWord;
 // const selectedWord = randomWord().toLowerCase(); // Assign the randomWord as selectedWord
 // console.log(selectedWord);
 
-// STEP 2
 // Create span element for each letter and append it to user-input-section
 function createLetterSpans() {
     for (let i = 0; i < selectedWord.length; i++) {
@@ -88,7 +77,6 @@ function generateButton() {
 function activateAllButtons() {
     let letterButtons = document.querySelectorAll(".alphabet-button");
 
-    // Tüm harf butonlarını devre dışı bırak
     letterButtons.forEach((button) => {
         button.disabled = false;
     });
@@ -98,7 +86,6 @@ function activateAllButtons() {
 const deactivateAllButtons = () => {
     let letterButtons = document.querySelectorAll(".alphabet-button");
 
-    // Tüm harf butonlarını devre dışı bırak
     letterButtons.forEach((button) => {
         button.disabled = true;
     });
@@ -162,9 +149,6 @@ function resetHangmanBodyParts() {
     console.log("All body parts are hided");
 }
 
-// }
-
-// STEP 3
 let correctLetters = []; // Define a variable for correct guess
 let wrongGuessCount = 0; // Define a variable for the number of wrong guesses
 let wrongLettersArr = []; // Define a variable for wrong letters
